@@ -1,8 +1,11 @@
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-800 text-white text-center p-4 mt-4">
-        <p>© 2025 Content Management App. All rights reserved.</p>
+      <footer className="bg-gray-800 text-white text-center h-16 flex items-center justify-center">
+        <p>
+          © {new Date().getFullYear()} Content Management App. All rights
+          reserved.
+        </p>
       </footer>
     </>
   );
