@@ -16,24 +16,26 @@ const UserProfileContentCard = ({ content }: { content: Content }) => {
   return (
     <>
       <Card key={content.id} className="shadow-lg">
-        <CardHeader className="flex items-center">
+        <CardHeader className="flex items-center justify-between">
           <CardTitle>{content.title}</CardTitle>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="cursor-pointer"
-            onClick={() => setOpen(true)}
-          >
-            <Pencil className="h-8 w-8 text-green-500 hover:text-green-700" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="cursor-pointer"
-            onClick={() => setOpenDeleteModal(true)}
-          >
-            <Trash2 className="h-8 w-8 text-red-500 hover:text-red-700" />
-          </Button>
+          <div className="flex items-center justify-between">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="cursor-pointer"
+              onClick={() => setOpen(true)}
+            >
+              <Pencil className="h-8 w-8 text-green-500 hover:text-green-700" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="cursor-pointer"
+              onClick={() => setOpenDeleteModal(true)}
+            >
+              <Trash2 className="h-8 w-8 text-red-500 hover:text-red-700" />
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           {videoId ? (

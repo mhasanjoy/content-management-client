@@ -17,7 +17,9 @@ const Home = () => {
       {isLoading ? (
         <HomePageLoader />
       ) : error ? (
-        <div className="text-red-500 text-center">Failed to load users.</div>
+        <div className="text-red-500 text-center">Failed to load users</div>
+      ) : users && !users.length ? (
+        <div className="text-red-500 text-center">No users found</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {users?.map((user) => (

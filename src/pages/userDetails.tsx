@@ -27,7 +27,7 @@ const UserDetails = () => {
         Published Contents
       </h2>
       {user?.contents.length === 0 ? (
-        <p className="text-gray-500 text-center">No content available.</p>
+        <p className="text-gray-500 text-center">No content available</p>
       ) : (
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
           {user?.contents.map((content) => (
