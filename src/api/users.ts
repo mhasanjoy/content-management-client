@@ -24,6 +24,27 @@ export const login = async (
   return result;
 };
 
+/** register function */
+export const register = async ({
+  name,
+  email,
+  password,
+}: {
+  name: string;
+  email: string;
+  password: string;
+}) => {
+  const response = await fetch(`${API_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password }),
+  });
+  const result = await response.json();
+
+  if (!result.success) throw new Error(result.message);
+  return result;
+};
+
 /** refresh token */
 export const refreshToken = async () => {
   const refreshToken = localStorage.getItem("refreshToken");

@@ -17,7 +17,7 @@ const UserDetails = () => {
     return (
       <div
         className="flex justify-center items-center"
-        style={{ height: "calc(100vh - 128px" }}
+        style={{ minHeight: "calc(100vh - 128px" }}
       >
         <Alert variant="destructive" className="w-1/2">
           <AlertTitle>{error.name}</AlertTitle>
