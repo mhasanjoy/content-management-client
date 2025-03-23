@@ -1,7 +1,7 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import UserContentCard from "@/components/UserDetails/UserContentCard";
+import UserProfile from "@/components/UserDetails/UserDetails";
+import UserContentCard from "@/components/UserDetails/UserDetailsContentCard";
 import UserDetailsLoader from "@/components/UserDetails/UserDetailsLoader";
-import UserProfileDetail from "@/components/UserDetails/UserProfileDetail";
 import { useGetUserById } from "@/hooks/useGetUserById";
 import { useParams } from "react-router";
 
@@ -10,7 +10,7 @@ const UserDetails = () => {
   const { data: user, isLoading, isError, error } = useGetUserById(id!);
 
   if (isLoading) {
-    return <UserDetailsLoader />;
+    return <UserDetailsLoader page="details" />;
   }
 
   if (isError)
@@ -27,7 +27,7 @@ const UserDetails = () => {
     );
   return (
     <div className="container mx-auto p-6 my-10">
-      {user?.id && <UserProfileDetail user={user} />}
+      {user?.id && <UserProfile user={user} />}
 
       <h2 className="text-xl font-semibold mb-6 text-center mt-10">
         Published Contents

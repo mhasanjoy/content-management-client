@@ -48,10 +48,50 @@ export const refreshToken = async () => {
   return result.accessToken;
 };
 
-/** fetch user profile by ID */
+/** fetch user by ID */
 export const fetchUserById = async (userId: string): Promise<UserProfile> => {
   const response = await fetch(`${API_URL}/users/${userId}`);
   const result = await response.json();
   if (!result.success) throw new Error(result.message);
   return result.data;
+};
+
+/** fetch user profile */
+export const fetchUserProfile = async (token: string | null) => {
+  const response = await fetch(`${API_URL}/users/profile`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  const result = await response.json();
+  if (!result.success) throw new Error(result.message);
+  return result.data;
+};
+
+/** update user info */
+export const updateUserProfile = async ({
+  name,
+  email,
+  bio,
+}: {
+  name: string;
+  email: string;
+  bio: string;
+}) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/users/profile`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ name, email, bio }),
+    }
+  );
+  const result = await response.json();
+
+  if (!result.success) {
+    throw new Error(result.message);
+  }
+
+  return result;
 };

@@ -5,7 +5,7 @@ import { useLogin } from "@/hooks/useLogin";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
 import * as Yup from "yup";
 
@@ -22,12 +22,14 @@ const validationSchema = Yup.object({
 const Login = () => {
   const { isAuthenticated } = useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      const redirectPath = location.state?.from || "/";
+      navigate(redirectPath, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated]);
 
   const [showPassword, setShowPassword] = useState(false);
   const { mutate: login, isPending, error, isError } = useLogin();

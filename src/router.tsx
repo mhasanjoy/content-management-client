@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/home";
 import Login from "./pages/login";
+import Profile from "./pages/profile";
 import UserDetails from "./pages/userDetails";
 
 const Router = () => {
@@ -11,6 +12,7 @@ const Router = () => {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="users/:id" element={<UserDetails />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

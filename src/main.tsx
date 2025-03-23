@@ -7,7 +7,7 @@ import "./index.css";
 import Router from "./router.tsx";
 
 // Create a client
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

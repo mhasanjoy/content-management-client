@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const UserDetailsLoader = () => {
+const UserDetailsLoader = ({ page }: { page: string }) => {
   return (
     <div className="container mx-auto p-6 my-10">
       {/* Bio Section Skeleton */}
@@ -19,7 +19,7 @@ const UserDetailsLoader = () => {
 
       {/* Content Section Skeleton */}
       <h2 className="text-xl font-semibold mb-6 text-center">
-        Published Contents
+        {page === "profile" ? "Contents" : "Published Contents"}
       </h2>
       <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
         {[...Array(2)].map((_, index) => (

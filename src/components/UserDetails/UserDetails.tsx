@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { User } from "@/types";
 
-const UserProfileDetail = ({ user }: { user: User }) => {
+const UserProfile = ({ user }: { user: User }) => {
   return (
     <Card>
       <CardHeader>
@@ -17,4 +17,4 @@ const UserProfileDetail = ({ user }: { user: User }) => {
   );
 };
 
-export default UserProfileDetail;
+export default UserProfile;
