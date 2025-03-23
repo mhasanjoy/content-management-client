@@ -76,17 +76,14 @@ export const updateUserProfile = async ({
   email: string;
   bio: string;
 }) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/users/profile`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ name, email, bio }),
-    }
-  );
+  const response = await fetch(`${API_URL}/users/profile`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: JSON.stringify({ name, email, bio }),
+  });
   const result = await response.json();
 
   if (!result.success) {
