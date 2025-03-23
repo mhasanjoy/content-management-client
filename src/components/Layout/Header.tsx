@@ -44,7 +44,7 @@ const Header = () => {
         ) : (
           <Link
             to="/login"
-            className="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-600"
+            className="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-600 font-bold"
           >
             Login
           </Link>

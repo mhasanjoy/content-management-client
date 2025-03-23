@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { useAuthContext } from "@/hooks/useAuthContext";
 import { useRegister } from "@/hooks/useRegister";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import * as Yup from "yup";
 
 // define the validation schema using Yup
@@ -24,6 +25,15 @@ const validationSchema = Yup.object({
 });
 
 const Register = () => {
+  const { isAuthenticated } = useAuthContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const { mutate: register, isPending } = useRegister();

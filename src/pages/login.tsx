@@ -6,7 +6,6 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { toast } from "sonner";
 import * as Yup from "yup";
 
 // define the validation schema using Yup
@@ -32,7 +31,7 @@ const Login = () => {
   }, [isAuthenticated]);
 
   const [showPassword, setShowPassword] = useState(false);
-  const { mutate: login, isPending, error, isError } = useLogin();
+  const { mutate: login, isPending } = useLogin();
 
   const handleSubmit = async (values: { email: string; password: string }) => {
     try {
@@ -41,12 +40,6 @@ const Login = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (isError) {
-      toast(error.message);
-    }
-  }, [isError, error?.message]);
 
   return (
     <div

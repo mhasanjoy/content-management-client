@@ -1,30 +1,24 @@
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import UserProfile from "@/components/UserDetails/UserDetails";
 import UserContentCard from "@/components/UserDetails/UserDetailsContentCard";
 import UserDetailsLoader from "@/components/UserDetails/UserDetailsLoader";
 import { useGetUserById } from "@/hooks/useGetUserById";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { toast } from "sonner";
 
 const UserDetails = () => {
   const { id } = useParams();
   const { data: user, isLoading, isError, error } = useGetUserById(id!);
+  const navigate = useNavigate();
 
   if (isLoading) {
     return <UserDetailsLoader page="details" />;
   }
 
-  if (isError)
-    return (
-      <div
-        className="flex justify-center items-center"
-        style={{ minHeight: "calc(100vh - 128px" }}
-      >
-        <Alert variant="destructive" className="w-1/2">
-          <AlertTitle>{error.name}</AlertTitle>
-          <AlertDescription>{error.message}</AlertDescription>
-        </Alert>
-      </div>
-    );
+  if (isError) {
+    toast(error.message);
+    navigate("/");
+  }
+
   return (
     <div className="container mx-auto p-6 my-10">
       {user?.id && <UserProfile user={user} />}

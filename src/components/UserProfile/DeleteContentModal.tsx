@@ -21,7 +21,7 @@ const DeleteContentModal = ({
 
   const handleDelete = async () => {
     try {
-      deleteContent({ contentId });
+      deleteContent(contentId);
       setOpen(false);
     } catch (error) {
       console.log(error);

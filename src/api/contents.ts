@@ -57,7 +57,7 @@ export const updateContent = async ({
 };
 
 /** delete user content */
-export const deleteContent = async ({ contentId }: { contentId: string }) => {
+export const deleteContent = async (contentId: string) => {
   const response = await fetch(`${API_URL}/contents/${contentId}`, {
     method: "DELETE",
     headers: {

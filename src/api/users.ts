@@ -10,9 +10,7 @@ export const fetchUsers = async (): Promise<User[]> => {
 };
 
 /** login function */
-export const login = async (
-  credentials: Credentials
-): Promise<{ accessToken: string; refreshToken: string }> => {
+export const login = async (credentials: Credentials) => {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -45,30 +43,6 @@ export const register = async ({
   return result;
 };
 
-/** refresh token */
-export const refreshToken = async () => {
-  const refreshToken = localStorage.getItem("refreshToken");
-
-  if (!refreshToken) {
-    throw new Error("No refresh token found");
-  }
-
-  const response = await fetch("/refresh-token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ refreshToken }),
-  });
-
-  const result = await response.json();
-  if (!result.success) {
-    throw new Error(result.message);
-  }
-
-  return result.accessToken;
-};
-
 /** fetch user by ID */
 export const fetchUserById = async (userId: string): Promise<UserProfile> => {
   const response = await fetch(`${API_URL}/users/${userId}`);
@@ -78,9 +52,9 @@ export const fetchUserById = async (userId: string): Promise<UserProfile> => {
 };
 
 /** fetch user profile */
-export const fetchUserProfile = async (token: string | null) => {
+export const fetchUserProfile = async () => {
   const response = await fetch(`${API_URL}/users/profile`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
   });
   const result = await response.json();
   if (!result.success) throw new Error(result.message);

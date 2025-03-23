@@ -25,8 +25,9 @@ const Profile = () => {
     }
   }, [isError]);
 
-  if (!isAuthenticated)
+  if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location.pathname }} replace />;
+  }
 
   if (isLoading) {
     return <UserDetailsLoader page="profile" />;
