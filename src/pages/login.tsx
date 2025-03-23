@@ -89,7 +89,7 @@ const Login = () => {
 
               <button
                 type="button"
-                className="absolute top-[46px] right-3 transform -translate-y-1/2 text-gray-500"
+                className="absolute top-12 right-3 transform -translate-y-1/2 text-gray-500"
                 onClick={() => setShowPassword((prev) => !prev)} // toggle password visibility
               >
                 {showPassword ? <EyeOff /> : <Eye />}

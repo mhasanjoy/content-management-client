@@ -1,4 +1,4 @@
-import { Credentials, User } from "@/types";
+import { Credentials, User, UserProfile } from "@/types";
 const API_URL = import.meta.env.VITE_API_URL;
 
 /** fetch all users */
@@ -46,4 +46,12 @@ export const refreshToken = async () => {
   }
 
   return result.accessToken;
+};
+
+/** fetch user profile by ID */
+export const fetchUserById = async (userId: string): Promise<UserProfile> => {
+  const response = await fetch(`${API_URL}/users/${userId}`);
+  const result = await response.json();
+  if (!result.success) throw new Error(result.message);
+  return result.data;
 };

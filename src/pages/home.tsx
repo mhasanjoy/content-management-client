@@ -7,10 +7,10 @@ const Home = () => {
   const { data: users, isLoading, error } = useGetUserList();
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 my-10">
       <HeroSection />
 
-      <h2 className="text-2xl font-semibold mb-6 text-center">
+      <h2 className="text-2xl font-semibold mb-6 text-center mt-10">
         Registered Users
       </h2>
 
