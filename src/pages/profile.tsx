@@ -1,7 +1,7 @@
-import UserContentCard from "@/components/UserDetails/UserDetailsContentCard";
 import UserDetailsLoader from "@/components/UserDetails/UserDetailsLoader";
 import CreateContentModal from "@/components/UserProfile/CreateContentModal";
 import UserProfileDetail from "@/components/UserProfile/UserProfile";
+import UserProfileContentCard from "@/components/UserProfile/UserProfileContentCard";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useGetUserProfile } from "@/hooks/useGetUserProfile";
 import { useLogout } from "@/hooks/useLogout";
@@ -51,7 +51,7 @@ const Profile = () => {
       ) : (
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
           {user?.contents.map((content) => (
-            <UserContentCard key={content.id} content={content} />
+            <UserProfileContentCard key={content.id} content={content} />
           ))}
         </div>
       )}
