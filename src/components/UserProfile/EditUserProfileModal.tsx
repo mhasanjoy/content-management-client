@@ -3,13 +3,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUpdateUserProfile } from "@/hooks/useUpdateUserById";
 import { User } from "@/types";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Textarea } from "../ui/textarea";
 
 const validationSchema = Yup.object({
-  name: Yup.string().optional(),
-  email: Yup.string().email("Invalid email address").optional(),
+  name: Yup.string()
+    .min(3, "Name must be at least 3 characters")
+    .required("Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
   bio: Yup.string().optional(),
 });
 
@@ -55,6 +59,11 @@ const EditUserModal = ({
               placeholder="Enter your name..."
               className="mt-2"
             />
+            <ErrorMessage
+              name="name"
+              component="div"
+              className="text-red-500 text-sm mt-2"
+            />
           </div>
           <div>
             <Label htmlFor="email">Email</Label>
@@ -64,6 +73,11 @@ const EditUserModal = ({
               type="email"
               placeholder="Enter your email..."
               className="mt-2"
+            />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className="text-red-500 text-sm mt-2"
             />
           </div>
           <div>

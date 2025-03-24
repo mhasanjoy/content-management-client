@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUpdateContent } from "@/hooks/useUpdateContent";
 import { Content } from "@/types";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 // Validation Schema
@@ -73,15 +73,25 @@ const EditContentModal = ({
                     placeholder="Enter content title..."
                     className="mt-2"
                   />
+                  <ErrorMessage
+                    name="title"
+                    component="div"
+                    className="text-red-500 text-sm mt-2"
+                  />
                 </div>
 
                 <div>
-                  <Label htmlFor="youtubeUrl">YouTube URL</Label>
+                  <Label htmlFor="youtubeUrl">YouTube Embed URL</Label>
                   <Field
                     as={Input}
                     name="youtubeUrl"
                     placeholder="Enter YouTube video link..."
                     className="mt-2"
+                  />
+                  <ErrorMessage
+                    name="youtubeUrl"
+                    component="div"
+                    className="text-red-500 text-sm mt-2"
                   />
                 </div>
 

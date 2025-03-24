@@ -12,7 +12,9 @@ const UserCard = ({ user }: { user: User }) => {
       </CardHeader>
       <CardContent>
         <Link to={`/users/${user.id}`}>
-          <Button className="mt-3 w-full">View Profile</Button>
+          <Button className="mt-3 w-full bg-blue-500 hover:bg-blue-600">
+            View Profile
+          </Button>
         </Link>
       </CardContent>
     </Card>

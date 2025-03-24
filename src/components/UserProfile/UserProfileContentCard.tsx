@@ -7,9 +7,6 @@ import DeleteContentModal from "./DeleteContentModal";
 import EditContentModal from "./EditContentModal";
 
 const UserProfileContentCard = ({ content }: { content: Content }) => {
-  // Extract YouTube Video ID from the URL
-  const videoId = new URL(content.youtubeUrl).searchParams.get("v");
-
   const [open, setOpen] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
@@ -38,17 +35,13 @@ const UserProfileContentCard = ({ content }: { content: Content }) => {
           </div>
         </CardHeader>
         <CardContent>
-          {videoId ? (
-            <iframe
-              className="w-full h-80 rounded-lg"
-              src={`https://www.youtube.com/embed/${videoId}`}
-              title={content.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            <p className="text-gray-500">Invalid YouTube URL</p>
-          )}
+          <iframe
+            className="w-full h-80 rounded-lg"
+            src={content.youtubeUrl}
+            title={content.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </CardContent>
       </Card>
 
